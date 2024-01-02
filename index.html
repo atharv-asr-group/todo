@@ -2,6 +2,14 @@
     <title>Todo App</title>
 </head>
 <script>
+    function deleteTodo(id){
+        console.log(id);
+        fetch('http://localhost:3000/delete/'+id,{
+            method:'DELETE'
+        }).then(()=>{
+            console.log('delete done');
+        })
+    }
     function callbackFn2(data){
         console.log(data);
         var parentElement=document.getElementById('mainArea');
@@ -15,6 +23,9 @@
         grandchild2Element.innerHTML=data[i].description;
         var grandchild3Element=document.createElement('button');
         grandchild3Element.innerHTML='delete';
+        grandchild3Element.setAttribute('onClick','deleteTodo('+data[i].id+')');
+        
+
         childElement.appendChild(grandchildElement);
         childElement.appendChild(grandchild2Element);
         childElement.appendChild(grandchild3Element);
