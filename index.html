@@ -9,11 +9,13 @@
         resp.json().then(callback2);
     }
     function onPress(){
+        const title= document.getElementById('title').value;
+        const description=document.getElementById('description').value;
         fetch('http://localhost:3000/todo',{
             method:'POST',
             body: JSON.stringify({
-                title:'gym',
-                description: 'go to gym at 7'
+                title:title,
+                description: description
             }),
             headers:{
                 'Content-Type':'application/json'
