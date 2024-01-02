@@ -9,8 +9,15 @@
         resp.json().then(callback2);
     }
     function onPress(){
-        fetch('http://localhost:3000/',{
-            method:'GET'
+        fetch('http://localhost:3000/todo',{
+            method:'POST',
+            body: JSON.stringify({
+                title:'gym',
+                description: 'go to gym at 7'
+            }),
+            headers:{
+                'Content-Type':'application/json'
+            }
         }).then(callback);
     }
 </script>
