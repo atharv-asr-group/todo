@@ -4,9 +4,25 @@
 <script>
     function callbackFn2(data){
         console.log(data);
-        var main=document.getElementById('mainArea');
-        main.innerHTML=JSON.stringify(data);
-    }
+        var parentElement=document.getElementById('mainArea');
+        // main.innerHTML=JSON.stringify(data);
+        for(var i=0;i<data.length;i++){
+        var childElement=document.createElement('div');
+
+        var grandchildElement=document.createElement('span');
+        grandchildElement.innerHTML=data[i].title;
+        var grandchild2Element=document.createElement('span');
+        grandchild2Element.innerHTML=data[i].description;
+        var grandchild3Element=document.createElement('button');
+        grandchild3Element.innerHTML='delete';
+        childElement.appendChild(grandchildElement);
+        childElement.appendChild(grandchild2Element);
+        childElement.appendChild(grandchild3Element);
+        
+
+        parentElement.appendChild(childElement);
+        }
+        }
     function callbackFn(resp){
         resp.json().then(callbackFn2);
     }
