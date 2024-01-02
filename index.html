@@ -2,6 +2,20 @@
     <title>Todo App</title>
 </head>
 <script>
+    function callbackFn2(data){
+        console.log(data);
+        var main=document.getElementById('mainArea');
+        main.innerHTML=JSON.stringify(data);
+    }
+    function callbackFn(resp){
+        resp.json().then(callbackFn2);
+    }
+    function getTodo(){
+        fetch('http://localhost:3000/',{
+            method:'GET'
+        }).then(callbackFn)
+    }
+    getTodo();
     function callback2(data){
         console.log(data);
     }
@@ -29,4 +43,7 @@
     Todo description
     <input type="text" id="description">
     <button onclick="onPress()">send todo</button>
+    <div id="mainArea">
+        
+    </div>
 </body>
